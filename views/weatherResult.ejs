@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Weather Results</title>
+</head>
+
+<body>
+
+    <div class="weather-result-block">
+        <div class="location-block">
+            <div class="location-header">
+                <h1> <%= weatherData.cityLocation %></h1>
+            </div>
+            <div class="location-line"></div>
+            <div class="location-coordinates">
+                <strong>Latitude:</strong> <%= weatherData.latitude %> | <strong>Longitude:</strong> <%= weatherData.longitude %>
+            </div>
+        </div>
+
+        <div class="current-time-block">
+            <div class="current-temperature">
+               <strong>Temperature:</strong> <%= weatherData.temperature %>°C
+            </div>
+            <div class="current-windspeed">
+                <strong>Wind Speed:</strong> <%= weatherData.windSpeed %>km/h
+            </div>
+            <div class="current-winddirection">
+                <strong>Wind Direction:</strong> <%= weatherData.windDirection %>°
+            </div>
+        </div>
+
+        <div class="hourly-block">
+            <% weatherData.hourlyData.forEach(hour => { %>
+             <div class="hourly-item">
+                <img src="/images/<%= hour.image %>" alt="Weather condition icon">
+                <div><strong><%= hour.time %></strong></div>
+                <div><%= hour.temperature %>°C</div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+</body>
+</html>
